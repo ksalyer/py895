@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    %linkcolor=blue,
+    citecolor=magenta,      
+    urlcolor=blue,
+}
+
+\title{Project Proposal}
+\author{V. Kovalchuk, K. Salyer}
+\date{November 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Goal}
+The goal of our project is to create a neural network which, depending on what dataset it is fed, will construct and send its own tweet from the account \href{https://twitter.com/mlfunsies1}{@MLfunsies1}. We will design the neural network such that the training dataset can be easily changed: either an already constructed dataset such as \href{https://data.world/crowdflower/2015-new-years-resolutions}{this collection of 2015 New Year's Resolutions} or construct our own using the Twitter API, Tweepy, to select and filter the tweets we want to feed into the neural network.
+
+\section{Process}
+\subsection{Training Data}
+We will first try to create our own dataset by reading the most popular N tweets, filtering based off of a hashtag. This has more potential applications because learning what is being said about certain natural disasters can help in allocating resources \cite{naturaldisaster}. We can specify the filtering hashtag and even location data in the code. 
+
+Another option available to us is to use any of a large number of free \href{https://github.com/shaypal5/awesome-twitter-data}{twitter datasets}. This would require some labeling of data, but it would be interesting to try to train the neural network to reply to tweets. Using these, we can train our neural network to tweet a resolution or to tweet like Elon Musk. 
+
+\subsection{Neural Network}
+We will have to use the Word2Vec approach in our neural network. Typically this is a group of shallow models that are trained to reconstruct linguistic contexts. We look forward to experimenting with numbers of layers, amount of data input, among other elements of the architecture. The most difficult part for us, however, will be interpreting the output of the neural network and having it craft a tweet. Since Word2Vec maps words to vectors, we can gauge how the training data affects the relationships that are learned by the neural network, and compare how those relationships vary with time or region. For example, a questions that we could explore is how the conversation about climate change has evolved over the years. 
+
+\subsection{Tweeting}
+Once we have a trained model and its output tweet, we can have it automatically send this tweet on the account we created for this project: @MLfunsies1. In order to do this, we will have to use the Twitter API, Tweepy, which has pre-constructed methods that will make execution of this step fairly simple.
+
+\section{Conclusions}
+This project will evolve as we get started and learn about what types of questions are actually interesting and feasible to explore with our approach. For example, one exercise we discussed is comparing the output where the training data is all the same topic but from different years. It will also be interesting to think of other applications of this approach, given that we were inspired by the fact that using ML on Twitter data can solve real world problems like the allocation of resources in a natural disaster. Not only can we use it for the entertainment value of seeing what the neural network tweets, but also the neural network itself can be a foundation for solving big problems: something we look forward to exploring.
+
+\par\noindent\rule{\textwidth}{0.4pt}
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{}
+	\bibitem{naturaldisaster}
+	D. Reynard and M. Shirgaokarb, 
+	``Harnessing the power of machine learning: Can Twitter data be useful in guiding resource allocation decisions during a natural disaster?" (2019),
+	\texttt{doi:10.1016/j.trd.2019.03.002}.
+\end{thebibliography}
+\endgroup
+
+\end{document}
